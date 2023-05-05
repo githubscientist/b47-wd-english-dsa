@@ -83,6 +83,18 @@ class LinkedList {
     insertTail(data) {
         
     }
+
+    length() {
+        
+    }
+
+    deleteHead() {
+        
+    }
+
+    deleteTail() {
+        
+    }
 }
 
 // create a new list
