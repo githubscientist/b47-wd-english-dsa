@@ -81,19 +81,53 @@ class LinkedList {
     }
 
     insertTail(data) {
-        
+        if (this.head != null) {
+            let thead = this.head;
+            // traverse a linked list
+            while (thead.next != null) {
+                thead = thead.next;
+            }
+            
+            // thead.next is null
+            // thead is pointing to the tail node
+            thead.next = new Node(data);
+        } else {
+            this.head = new Node(data);
+        }
     }
 
     length() {
-        
+        let nodes = [];
+        let thead = this.head;
+        // traverse a linked list
+        while (thead != null) {
+            nodes.push(thead.data);
+            thead = thead.next;
+        }
+        return nodes.length;
     }
 
     deleteHead() {
-        
+        // hint: null
+        if (this.head != null) {
+            this.head = this.head.next;
+        }
     }
 
     deleteTail() {
-        
+        // if the list has more than one node
+        if (this.head != null) {
+            if (this.head.next == null) {
+                // the list has only one node
+                this.head = null;
+            } else {
+                let thead = this.head;
+                while (thead.next.next != null) {
+                    thead = thead.next;
+                }
+                thead.next = null;
+            }
+        }
     }
 }
 
@@ -117,19 +151,20 @@ list.insertHead(5);
 list.insertHead(4);
 list.insertHead(3);
 list.insertHead(2);
+list.insertTail(6);
+list.insertTail(7);
+list.deleteHead();
+list.deleteTail();
 console.log(list.toString());
 
 /*
     list = LinkedList {
         head: Node {
-            data: 2,
-            next: Node {
                 data: 3,
                 next: Node {
                     data: 4,
                     next: null
                 }
             }
-        }
     }
 */
